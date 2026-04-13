@@ -1,0 +1,14 @@
+<section class="page-card gallery-card">
+  <div class="gallery-card__intro">
+    <h2>Galería</h2>
+    <p>Listado visual simple para la sección de galería.</p>
+  </div>
+
+  <div class="gallery-grid">
+    @for (item of items; track item) {
+      <article class="gallery-tile">
+        <span>{{ item }}</span>
+      </article>
+    }
+  </div>
+</section>

@@ -1,0 +1,13 @@
+.app-start {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--app-start-width);
+  padding: 0 1rem;
+  margin: 1.5rem auto 2rem;
+}

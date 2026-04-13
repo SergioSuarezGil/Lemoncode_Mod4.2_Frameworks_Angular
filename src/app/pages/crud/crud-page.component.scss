@@ -1,0 +1,63 @@
+.users-crud-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-gap);
+
+  &__intro {
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.4em;
+    }
+
+    p {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+.users-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-gap);
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--app-gap);
+  }
+
+  mat-form-field {
+    flex: 1 1 0;
+    min-width: 9rem;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+    padding-top: 0.31rem;
+  }
+
+  &__error {
+    width: 100%;
+    margin: 0;
+    color: #b91c1c;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 48rem) {
+  .users-form__row {
+    flex-wrap: wrap;
+  }
+
+  .users-form mat-form-field,
+  .users-form__actions {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="users-list">
+  @for (user of users; track user.id) {
+    <article class="users-list__item">
+      <div class="users-list__content">
+        <p><strong>ID:</strong> {{ user.id }}</p>
+        <p><strong>Nombre:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Teléfono:</strong> {{ user.phone }}</p>
+      </div>
+      <div class="users-list__actions">
+        <button mat-stroked-button type="button" (click)="edit.emit(user)">Editar</button>
+        <button class="users-list__delete" mat-stroked-button type="button" (click)="remove.emit(user.id)">Borrar</button>
+      </div>
+    </article>
+  } @empty {
+    <p class="users-list__empty">No hay usuarios. Añade uno desde el formulario.</p>
+  }
+</div>

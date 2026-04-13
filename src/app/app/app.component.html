@@ -1,0 +1,15 @@
+<div class="app-start">
+  @if (auth.isLogged()) {
+    <app-private-header></app-private-header>
+    <app-private-menu></app-private-menu>
+  } @else {
+    <app-public-header></app-public-header>
+    <app-public-menu></app-public-menu>
+  }
+
+  <main class="app-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
+</div>

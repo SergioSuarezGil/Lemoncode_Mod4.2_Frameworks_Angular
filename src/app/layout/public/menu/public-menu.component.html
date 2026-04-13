@@ -1,0 +1,7 @@
+<nav class="menu">
+  @for (link of links; track link.route) {
+    <a mat-stroked-button [routerLink]="link.route" routerLinkActive="menu__link--active">
+      {{ link.label }}
+    </a>
+  }
+</nav>

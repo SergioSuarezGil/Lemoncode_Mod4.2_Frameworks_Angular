@@ -1,0 +1,17 @@
+.page-card {
+  min-height: 20rem;
+  border-radius: 1.50rem;
+  padding: 2.00rem;
+  background: #ffffff;
+  border: 0.06rem solid var(--app-border);
+}
+
+.page-card h2 {
+  margin: 0;
+  font-size: 1.40em;
+}
+
+.page-card p {
+  margin: 0.75rem 0 0;
+  color: var(--app-muted);
+}

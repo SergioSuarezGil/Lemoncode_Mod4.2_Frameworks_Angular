@@ -1,0 +1,36 @@
+<section class="page-card login-card">
+  <div class="login-card__intro">
+    <h2>Login</h2>
+    <p>Introduce tus credenciales para entrar en la zona privada.</p>
+  </div>
+
+  <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput type="email" formControlName="username" autocomplete="username">
+      @if (form.controls.username.touched && form.controls.username.hasError('required')) {
+        <mat-error>El username es obligatorio.</mat-error>
+      }
+      @if (form.controls.username.touched && form.controls.username.hasError('email')) {
+        <mat-error>Introduce un email válido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" autocomplete="current-password">
+      @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+        <mat-error>La contraseña es obligatoria.</mat-error>
+      }
+      @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+        <mat-error>La contraseña debe tener al menos 8 caracteres.</mat-error>
+      }
+    </mat-form-field>
+
+    @if (invalidCredentials) {
+      <p class="login-form__error">Las credenciales no son correctas.</p>
+    }
+
+    <button mat-raised-button color="primary" type="submit">Entrar</button>
+  </form>
+</section>

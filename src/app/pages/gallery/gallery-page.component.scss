@@ -1,0 +1,49 @@
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-gap);
+
+  &__intro {
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.4em;
+    }
+
+    p {
+      margin-top: 0.75rem;
+      color: var(--app-muted);
+    }
+  }
+}
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--app-gap);
+}
+
+.gallery-tile {
+  min-height: 7rem;
+  border-radius: var(--app-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 calc(50% - 0.5rem);
+  background: var(--app-surface-alt);
+  border: var(--app-border-width) solid rgba(19, 34, 56, 0.08);
+}
+
+.gallery-tile span {
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+@media (max-width: 48rem) {
+  .gallery-tile {
+    flex-basis: 100%;
+  }
+}

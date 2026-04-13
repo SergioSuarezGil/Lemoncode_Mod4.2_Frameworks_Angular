@@ -1,0 +1,16 @@
+.menu {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0.90rem auto 0;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.90rem 1rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  border: 0.06rem solid var(--app-border);
+
+  &__link--active {
+    background: var(--app-surface-alt);
+  }
+}

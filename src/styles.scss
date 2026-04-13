@@ -1,0 +1,67 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  color-scheme: light;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  --app-bg: #f5f7fb;
+  --app-surface: #ffffff;
+  --app-surface-alt: #eef2ff;
+  --app-text: #132238;
+  --app-muted: #5f6b7a;
+  --app-primary: #0f766e;
+  --app-border: rgba(19, 34, 56, 0.12);
+  --app-border-width: 0.06rem;
+  --app-radius: 1rem;
+  --app-radius-lg: 1.25rem;
+  --app-panel-padding: 1.5rem;
+  --app-gap: 1rem;
+  --app-start-width: 70rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--app-text);
+  font-size: 1em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.page-card {
+  min-height: 20rem;
+  border-radius: var(--app-radius-lg);
+  padding: var(--app-panel-padding);
+  background: var(--app-surface);
+  border: var(--app-border-width) solid var(--app-border);
+}
+
+.page-card h2 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.page-card p {
+  margin: 0.75rem 0 0;
+  color: var(--app-muted);
+}
