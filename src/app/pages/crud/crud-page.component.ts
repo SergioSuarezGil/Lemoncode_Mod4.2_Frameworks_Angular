@@ -9,6 +9,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UserItem, UsersService } from '../../shared/services/users.service';
 
 @Component({
+  selector: 'app-users-crud-page',
   standalone: true,
   imports: [
     ReactiveFormsModule,

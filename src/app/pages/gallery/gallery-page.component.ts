@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { GalleryPhoto, GalleryService } from '../../shared/services/gallery.service';
 
 @Component({
+  selector: 'app-gallery-page',
   standalone: true,
   imports: [MatButtonModule],
   styleUrl: './gallery-page.component.scss',

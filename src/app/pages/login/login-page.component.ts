@@ -4,11 +4,20 @@ import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { finalize } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
+  selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+  ],
   styleUrl: './login-page.component.scss',
   templateUrl: './login-page.component.html',
 })
@@ -21,6 +30,7 @@ export class LoginPageComponent {
   });
 
   invalidCredentials = false;
+  isLoading = false;
 
   constructor(
     private readonly auth: AuthService,
@@ -28,6 +38,10 @@ export class LoginPageComponent {
   ) {}
 
   submit(): void {
+    if (this.isLoading) {
+      return;
+    }
+
     this.invalidCredentials = false;
 
     if (this.form.invalid) {
@@ -35,13 +49,18 @@ export class LoginPageComponent {
       return;
     }
 
-    const success = this.auth.login(this.form.getRawValue());
+    this.isLoading = true;
 
-    if (!success) {
-      this.invalidCredentials = true;
-      return;
-    }
+    this.auth
+      .login(this.form.getRawValue())
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((success) => {
+        if (!success) {
+          this.invalidCredentials = true;
+          return;
+        }
 
-    void this.router.navigate(['/dashboard']);
+        void this.router.navigate(['/dashboard']);
+      });
   }
 }

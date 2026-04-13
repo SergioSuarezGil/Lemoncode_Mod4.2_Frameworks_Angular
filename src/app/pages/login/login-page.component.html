@@ -31,6 +31,15 @@
       <p class="login-form__error">Las credenciales no son correctas.</p>
     }
 
-    <button mat-raised-button color="primary" type="submit">Entrar</button>
+    @if (isLoading) {
+      <div class="login-form__loading">
+        <mat-spinner [diameter]="28" [strokeWidth]="4"></mat-spinner>
+        <span>Validando credenciales...</span>
+      </div>
+    }
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Entrando...' : 'Entrar' }}
+    </button>
   </form>
 </section>

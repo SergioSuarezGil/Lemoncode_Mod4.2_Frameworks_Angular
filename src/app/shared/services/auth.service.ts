@@ -1,4 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
+import { Observable, delay, of } from 'rxjs';
 import { AuthConfigService } from './auth-config.service';
 
 export interface Credentials {
@@ -23,6 +24,7 @@ interface StoredAuthState {
 export class AuthService {
   private readonly authConfig = inject(AuthConfigService);
   private readonly defaultProfile: UserProfile = this.authConfig.getDefaultProfile();
+  private readonly loginDelayMs = 2000;
   private readonly storageKey = 'lemoncode-auth-state';
   private readonly loggedState = signal<boolean>(false);
   private readonly profileState = signal<UserProfile>({ ...this.defaultProfile });
@@ -31,16 +33,16 @@ export class AuthService {
     this.restoreState();
   }
 
-  login({ username, password }: Credentials): boolean {
+  login({ username, password }: Credentials): Observable<boolean> {
     const currentProfile = this.profileState();
 
     if (username !== currentProfile.email || password !== currentProfile.password) {
-      return false;
+      return of(false).pipe(delay(this.loginDelayMs));
     }
 
     this.loggedState.set(true);
     this.persistState();
-    return true;
+    return of(true).pipe(delay(this.loginDelayMs));
   }
 
   logout(): void {

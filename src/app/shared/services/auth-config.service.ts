@@ -15,8 +15,13 @@ export class AuthConfigService {
     email: 'master@lemoncode.net',
     password: '12345678',
   };
+  private readonly loginDelayMs = 2000;
 
   getDefaultProfile(): AuthDefaultProfile {
     return { ...this.defaultProfile };
+  }
+
+  getLoginDelayMs(): number {
+    return this.loginDelayMs;
   }
 }

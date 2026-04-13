@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
+  selector: 'app-profile-page',
   standalone: true,
   imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   styleUrl: './profile-page.component.scss',
