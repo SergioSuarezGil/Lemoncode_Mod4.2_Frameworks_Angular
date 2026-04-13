@@ -1,0 +1,30 @@
+<div class="gallery-controls">
+  <button
+    mat-stroked-button
+    type="button"
+    (click)="previousClick.emit()"
+    [disabled]="isFirstPhoto"
+    aria-label="Imagen anterior"
+  >
+    ◀
+  </button>
+  <button
+    mat-stroked-button
+    type="button"
+    (click)="nextClick.emit()"
+    [disabled]="isLastPhoto"
+    aria-label="Imagen siguiente"
+  >
+    ▶
+  </button>
+  <button mat-stroked-button type="button" (click)="increaseClick.emit()">Aumentar</button>
+  <button mat-stroked-button type="button" (click)="decreaseClick.emit()">Disminuir</button>
+
+  @if (!isPlaying) {
+    <button mat-raised-button color="primary" type="button" (click)="playClick.emit()">Play</button>
+  }
+
+  @if (isPlaying) {
+    <button mat-raised-button type="button" (click)="stopClick.emit()">Stop</button>
+  }
+</div>

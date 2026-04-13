@@ -1,47 +1,41 @@
 <section class="page-card gallery-card">
   <div class="gallery-card__intro">
-    <h2>Galería</h2>
-    <p>Miniaturas, imagen seleccionada y control manual/automático.</p>
+    <app-page-intro
+      title="Galería"
+      subtitle="Miniaturas, imagen seleccionada y control manual/automático."
+    ></app-page-intro>
   </div>
+
+  <app-gallery-controls
+    [isFirstPhoto]="isFirstPhoto"
+    [isLastPhoto]="isLastPhoto"
+    [isPlaying]="isPlaying()"
+    (previousClick)="previous()"
+    (nextClick)="next()"
+    (increaseClick)="increase()"
+    (decreaseClick)="decrease()"
+    (playClick)="play()"
+    (stopClick)="stop()"
+  ></app-gallery-controls>
 
   <div class="gallery-selected">
-    <img
-      [src]="selectedPhoto().src"
-      [alt]="selectedPhoto().title"
-      [style.transform]="'scale(' + zoom() + ')'"
-    />
+    <div class="gallery-selected__media" [style.transform]="'scale(' + zoom() + ')'">
+      <img rotate="0" step="15" [src]="selectedPhoto().src" [alt]="selectedPhoto().title" />
+    </div>
   </div>
 
-  <div class="gallery-grid">
-    @for (photo of photos; track photo.id; let i = $index) {
-      <button
-        class="gallery-tile"
-        type="button"
-        [class.gallery-tile--active]="i === selectedIndex()"
-        (click)="selectPhoto(i)"
-      >
-        <img [src]="photo.src" [alt]="photo.title" />
-        <span>{{ photo.title }}</span>
-      </button>
-    }
-  </div>
+  <app-gallery-thumbnails
+    [items]="pagedPhotos()"
+    [selectedIndex]="selectedIndex()"
+    (selectIndex)="selectPhoto($event)"
+  ></app-gallery-thumbnails>
 
-  <div class="gallery-controls">
-    <button mat-stroked-button type="button" (click)="previous()" [disabled]="isFirstPhoto">
-      Anterior
-    </button>
-    <button mat-stroked-button type="button" (click)="next()" [disabled]="isLastPhoto">
-      Siguiente
-    </button>
-    <button mat-stroked-button type="button" (click)="increase()">Aumentar</button>
-    <button mat-stroked-button type="button" (click)="decrease()">Disminuir</button>
-
-    @if (!isPlaying()) {
-      <button mat-raised-button color="primary" type="button" (click)="play()">Play</button>
-    }
-
-    @if (isPlaying()) {
-      <button mat-raised-button type="button" (click)="stop()">Stop</button>
-    }
-  </div>
+  <app-gallery-pagination
+    [page]="thumbnailsPage()"
+    [totalPages]="thumbnailsTotalPages()"
+    [canGoPrevious]="canGoPreviousThumbnailsPage"
+    [canGoNext]="canGoNextThumbnailsPage"
+    (previousClick)="previousThumbnailsPage()"
+    (nextClick)="nextThumbnailsPage()"
+  ></app-gallery-pagination>
 </section>

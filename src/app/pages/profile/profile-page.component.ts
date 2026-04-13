@@ -3,12 +3,19 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { PageIntroComponent } from '../../components/page-intro/page-intro.component';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    PageIntroComponent,
+  ],
   styleUrl: './profile-page.component.scss',
   templateUrl: './profile-page.component.html',
 })

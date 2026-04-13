@@ -1,0 +1,44 @@
+.gallery-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--app-gap);
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: var(--app-border-width) solid var(--app-border);
+}
+
+.gallery-tile {
+  min-height: 7rem;
+  padding: 0.75rem;
+  border-radius: var(--app-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--app-surface-alt);
+  border: var(--app-border-width) solid rgba(19, 34, 56, 0.08);
+  cursor: pointer;
+}
+
+.gallery-tile img {
+  width: 100%;
+  max-width: 10rem;
+  height: 4.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.gallery-tile--active {
+  border-color: var(--app-primary);
+  background: rgba(15, 118, 110, 0.14);
+  box-shadow: inset 0 0 0 0.12rem var(--app-primary);
+}
+
+.gallery-tile span {
+  margin-top: 0.5rem;
+  font-size: 0.95em;
+  font-weight: 600;
+}

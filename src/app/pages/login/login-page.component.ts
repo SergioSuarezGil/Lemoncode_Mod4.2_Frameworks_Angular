@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { finalize } from 'rxjs';
+import { PageIntroComponent } from '../../components/page-intro/page-intro.component';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -17,6 +18,7 @@ import { AuthService } from '../../shared/services/auth.service';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    PageIntroComponent,
   ],
   styleUrl: './login-page.component.scss',
   templateUrl: './login-page.component.html',

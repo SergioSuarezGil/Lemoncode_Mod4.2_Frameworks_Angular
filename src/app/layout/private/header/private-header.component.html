@@ -1,16 +1,7 @@
 <header class="header header--private">
-  <div class="brand">
-    <div class="brand__logo">LC</div>
-    <div>
-      <p class="brand__eyebrow">Sesión iniciada</p>
-      <h1 class="brand__title">Lemoncode Lab</h1>
-    </div>
-  </div>
+  <app-header subtitle="Sesión iniciada" title="Lemoncode Lab" mode="private"></app-header>
 
   @if (auth.isLogged()) {
-    <div class="session">
-      <span class="session__user">Hola {{ auth.getUsername() }} !!</span>
-      <button mat-raised-button color="primary" type="button" (click)="logout()">Salir</button>
-    </div>
+    <app-session-badge [username]="auth.getUsername()" (logoutClick)="logout()"></app-session-badge>
   }
 </header>

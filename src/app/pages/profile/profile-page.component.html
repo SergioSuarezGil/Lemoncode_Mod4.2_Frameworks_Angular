@@ -1,7 +1,9 @@
 <section class="page-card">
   <div class="profile-card__intro">
-    <h2>Profile</h2>
-    <p>Edita tus datos de acceso: usuario, email y contraseña.</p>
+    <app-page-intro
+      title="Profile"
+      subtitle="Edita tus datos de acceso: usuario, email y contraseña."
+    ></app-page-intro>
   </div>
 
   <form class="profile-form" [formGroup]="form" (ngSubmit)="submit()">

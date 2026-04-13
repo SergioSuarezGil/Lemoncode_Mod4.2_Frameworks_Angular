@@ -1,22 +1,47 @@
 import { Component, OnDestroy, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { GalleryControlsComponent } from '../../components/gallery-controls/gallery-controls.component';
+import { GalleryPaginationComponent } from '../../components/gallery-pagination/gallery-pagination.component';
+import {
+  GalleryThumbnailItem,
+  GalleryThumbnailsComponent,
+} from '../../components/gallery-thumbnails/gallery-thumbnails.component';
+import { RotateDirective } from '../../shared/directives/rotate.directive';
+import { PageIntroComponent } from '../../components/page-intro/page-intro.component';
 import { GalleryPhoto, GalleryService } from '../../shared/services/gallery.service';
 
 @Component({
   selector: 'app-gallery-page',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [
+    MatButtonModule,
+    RotateDirective,
+    PageIntroComponent,
+    GalleryControlsComponent,
+    GalleryThumbnailsComponent,
+    GalleryPaginationComponent,
+  ],
   styleUrl: './gallery-page.component.scss',
   templateUrl: './gallery-page.component.html',
 })
 export class GalleryPageComponent implements OnDestroy {
   private readonly galleryService = inject(GalleryService);
+  private readonly thumbnailsPerPage = 3;
 
   readonly photos: GalleryPhoto[] = this.galleryService.getPhotos();
   readonly selectedIndex = signal(0);
+  readonly thumbnailsPage = signal(0);
   readonly zoom = signal(1);
   readonly isPlaying = signal(false);
   readonly selectedPhoto = computed(() => this.photos[this.selectedIndex()]);
+  readonly thumbnailsTotalPages = computed(() =>
+    Math.ceil(this.photos.length / this.thumbnailsPerPage)
+  );
+  readonly pagedPhotos = computed<GalleryThumbnailItem[]>(() => {
+    const start = this.thumbnailsPage() * this.thumbnailsPerPage;
+    const end = start + this.thumbnailsPerPage;
+    return this.photos.slice(start, end).map((photo, offset) => ({ photo, index: start + offset }));
+  });
 
   private autoplayId: ReturnType<typeof setInterval> | null = null;
 
@@ -29,7 +54,7 @@ export class GalleryPageComponent implements OnDestroy {
   }
 
   selectPhoto(index: number): void {
-    this.selectedIndex.set(index);
+    this.setSelectedIndex(index);
   }
 
   previous(): void {
@@ -37,7 +62,7 @@ export class GalleryPageComponent implements OnDestroy {
       return;
     }
 
-    this.selectedIndex.update((current) => current - 1);
+    this.setSelectedIndex(this.selectedIndex() - 1);
   }
 
   next(): void {
@@ -45,7 +70,31 @@ export class GalleryPageComponent implements OnDestroy {
       return;
     }
 
-    this.selectedIndex.update((current) => current + 1);
+    this.setSelectedIndex(this.selectedIndex() + 1);
+  }
+
+  previousThumbnailsPage(): void {
+    if (!this.canGoPreviousThumbnailsPage) {
+      return;
+    }
+
+    this.thumbnailsPage.update((page) => page - 1);
+  }
+
+  nextThumbnailsPage(): void {
+    if (!this.canGoNextThumbnailsPage) {
+      return;
+    }
+
+    this.thumbnailsPage.update((page) => page + 1);
+  }
+
+  get canGoPreviousThumbnailsPage(): boolean {
+    return this.thumbnailsPage() > 0;
+  }
+
+  get canGoNextThumbnailsPage(): boolean {
+    return this.thumbnailsPage() < this.thumbnailsTotalPages() - 1;
   }
 
   increase(): void {
@@ -63,7 +112,8 @@ export class GalleryPageComponent implements OnDestroy {
 
     this.isPlaying.set(true);
     this.autoplayId = setInterval(() => {
-      this.selectedIndex.update((current) => (current + 1) % this.photos.length);
+      const nextIndex = (this.selectedIndex() + 1) % this.photos.length;
+      this.setSelectedIndex(nextIndex);
     }, 2000);
   }
 
@@ -80,5 +130,10 @@ export class GalleryPageComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.stop();
+  }
+
+  private setSelectedIndex(index: number): void {
+    this.selectedIndex.set(index);
+    this.thumbnailsPage.set(Math.floor(index / this.thumbnailsPerPage));
   }
 }

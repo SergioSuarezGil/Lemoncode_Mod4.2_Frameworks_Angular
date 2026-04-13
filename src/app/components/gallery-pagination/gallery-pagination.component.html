@@ -1,0 +1,14 @@
+<div class="gallery-pagination">
+  <button
+    mat-stroked-button
+    type="button"
+    (click)="previousClick.emit()"
+    [disabled]="!canGoPrevious"
+  >
+    ◀
+  </button>
+  <span>Página {{ page + 1 }} de {{ totalPages }}</span>
+  <button mat-stroked-button type="button" (click)="nextClick.emit()" [disabled]="!canGoNext">
+    ▶
+  </button>
+</div>

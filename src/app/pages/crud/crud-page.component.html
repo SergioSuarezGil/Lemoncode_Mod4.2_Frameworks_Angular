@@ -1,7 +1,9 @@
 <section class="page-card users-crud-card">
   <div class="users-crud-card__intro">
-    <h2>Users CRUD</h2>
-    <p>Gestiona usuarios en memoria: alta, edición y borrado.</p>
+    <app-page-intro
+      title="Users CRUD"
+      subtitle="Gestiona usuarios en memoria: alta, edición y borrado."
+    ></app-page-intro>
   </div>
 
   <form class="users-form" [formGroup]="form" (ngSubmit)="submit()">

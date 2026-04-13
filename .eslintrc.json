@@ -43,6 +43,12 @@
         "prettier"
       ],
       "rules": {}
+    },
+    {
+      "files": ["src/app/shared/directives/rotate.directive.ts"],
+      "rules": {
+        "@angular-eslint/directive-selector": "off"
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { UserItem } from '../../../../shared/services/users.service';
+import { UserItem } from '../../shared/services/users.service';
 
 @Component({
   selector: 'app-users-list',

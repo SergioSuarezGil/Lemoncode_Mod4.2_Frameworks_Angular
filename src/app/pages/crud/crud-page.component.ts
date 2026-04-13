@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
-import { UsersListComponent } from './components/users-list/users-list.component';
+import { DeleteConfirmDialogComponent } from '../../components/delete-confirm-dialog/delete-confirm-dialog.component';
+import { UsersListComponent } from '../../components/users-list/users-list.component';
+import { PageIntroComponent } from '../../components/page-intro/page-intro.component';
 import { UserItem, UsersService } from '../../shared/services/users.service';
 
 @Component({
@@ -17,6 +18,7 @@ import { UserItem, UsersService } from '../../shared/services/users.service';
     MatFormFieldModule,
     MatInputModule,
     UsersListComponent,
+    PageIntroComponent,
   ],
   styleUrl: './crud-page.component.scss',
   templateUrl: './crud-page.component.html',
