@@ -10,9 +10,16 @@ import { PublicMenuComponent } from './layout/public/menu/public-menu.component'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, PrivateHeaderComponent, PrivateMenuComponent, PublicHeaderComponent, PublicMenuComponent],
+  imports: [
+    RouterOutlet,
+    FooterComponent,
+    PrivateHeaderComponent,
+    PrivateMenuComponent,
+    PublicHeaderComponent,
+    PublicMenuComponent,
+  ],
   styleUrl: './app.component.scss',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   readonly auth = inject(AuthService);

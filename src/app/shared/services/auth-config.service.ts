@@ -7,13 +7,13 @@ export interface AuthDefaultProfile {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthConfigService {
   private readonly defaultProfile: AuthDefaultProfile = {
     username: 'master',
     email: 'master@lemoncode.net',
-    password: '12345678'
+    password: '12345678',
   };
 
   getDefaultProfile(): AuthDefaultProfile {

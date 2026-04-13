@@ -8,7 +8,7 @@
     <div class="users-form__row">
       <mat-form-field appearance="outline">
         <mat-label>ID</mat-label>
-        <input matInput type="number" formControlName="id">
+        <input matInput type="number" formControlName="id" />
         @if (form.controls.id.touched && form.controls.id.hasError('required')) {
           <mat-error>El ID es obligatorio.</mat-error>
         }
@@ -19,7 +19,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input matInput type="text" formControlName="name">
+        <input matInput type="text" formControlName="name" />
         @if (form.controls.name.touched && form.controls.name.hasError('required')) {
           <mat-error>El nombre es obligatorio.</mat-error>
         }
@@ -27,7 +27,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email">
+        <input matInput type="email" formControlName="email" />
         @if (form.controls.email.touched && form.controls.email.hasError('required')) {
           <mat-error>El email es obligatorio.</mat-error>
         }
@@ -38,7 +38,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Teléfono</mat-label>
-        <input matInput type="text" formControlName="phone">
+        <input matInput type="text" formControlName="phone" />
         @if (form.controls.phone.touched && form.controls.phone.hasError('required')) {
           <mat-error>El teléfono es obligatorio.</mat-error>
         }
@@ -59,5 +59,9 @@
     }
   </form>
 
-  <app-users-list [users]="users()" (edit)="editUser($event)" (remove)="deleteUser($event)"></app-users-list>
+  <app-users-list
+    [users]="users()"
+    (edit)="editUser($event)"
+    (remove)="deleteUser($event)"
+  ></app-users-list>
 </section>

@@ -7,7 +7,7 @@ import { UserItem } from '../../../../shared/services/users.service';
   standalone: true,
   imports: [MatButtonModule],
   styleUrl: './users-list.component.scss',
-  templateUrl: './users-list.component.html'
+  templateUrl: './users-list.component.html',
 })
 export class UsersListComponent {
   @Input({ required: true }) users: UserItem[] = [];

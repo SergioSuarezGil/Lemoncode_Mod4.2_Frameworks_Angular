@@ -7,7 +7,7 @@
   <form class="profile-form" [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field appearance="outline">
       <mat-label>Usuario</mat-label>
-      <input matInput type="text" formControlName="username">
+      <input matInput type="text" formControlName="username" />
       @if (form.controls.username.touched && form.controls.username.hasError('required')) {
         <mat-error>El usuario es obligatorio.</mat-error>
       }
@@ -15,7 +15,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email" formControlName="email">
+      <input matInput type="email" formControlName="email" />
       @if (form.controls.email.touched && form.controls.email.hasError('required')) {
         <mat-error>El email es obligatorio.</mat-error>
       }
@@ -26,7 +26,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password">
+      <input matInput type="password" formControlName="password" />
       @if (form.controls.password.touched && form.controls.password.hasError('required')) {
         <mat-error>La contraseña es obligatoria.</mat-error>
       }

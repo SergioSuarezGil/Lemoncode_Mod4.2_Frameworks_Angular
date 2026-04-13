@@ -8,10 +8,13 @@ import { AuthService } from '../../../shared/services/auth.service';
   standalone: true,
   imports: [MatButtonModule],
   styleUrl: './private-header.component.scss',
-  templateUrl: './private-header.component.html'
+  templateUrl: './private-header.component.html',
 })
 export class PrivateHeaderComponent {
-  constructor(public readonly auth: AuthService, private readonly router: Router) {}
+  constructor(
+    public readonly auth: AuthService,
+    private readonly router: Router
+  ) {}
 
   logout(): void {
     this.auth.logout();

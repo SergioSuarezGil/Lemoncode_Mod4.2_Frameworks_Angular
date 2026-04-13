@@ -9,7 +9,14 @@
       </div>
       <div class="users-list__actions">
         <button mat-stroked-button type="button" (click)="edit.emit(user)">Editar</button>
-        <button class="users-list__delete" mat-stroked-button type="button" (click)="remove.emit(user.id)">Borrar</button>
+        <button
+          class="users-list__delete"
+          mat-stroked-button
+          type="button"
+          (click)="remove.emit(user.id)"
+        >
+          Borrar
+        </button>
       </div>
     </article>
   } @empty {

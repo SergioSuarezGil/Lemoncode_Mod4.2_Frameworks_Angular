@@ -10,9 +10,15 @@ import { UserItem, UsersService } from '../../shared/services/users.service';
 
 @Component({
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, UsersListComponent],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    UsersListComponent,
+  ],
   styleUrl: './crud-page.component.scss',
-  templateUrl: './crud-page.component.html'
+  templateUrl: './crud-page.component.html',
 })
 export class UsersCrudPageComponent {
   private readonly formBuilder = inject(FormBuilder);
@@ -24,7 +30,7 @@ export class UsersCrudPageComponent {
     id: [1, [Validators.required, Validators.min(1)]],
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required]]
+    phone: ['', [Validators.required]],
   });
 
   readonly users = this.usersService.users;
@@ -49,7 +55,7 @@ export class UsersCrudPageComponent {
       id: Number(value.id),
       name: value.name.trim(),
       email: value.email.trim(),
-      phone: value.phone.trim()
+      phone: value.phone.trim(),
     };
 
     if (this.editingId === null) {
@@ -81,7 +87,7 @@ export class UsersCrudPageComponent {
       id: user.id,
       name: user.name,
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
     });
   }
 
@@ -89,7 +95,7 @@ export class UsersCrudPageComponent {
     const user = this.users().find((item) => item.id === id);
     const userLabel = user ? `${user.name} (ID ${user.id})` : `ID ${id}`;
     const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
-      data: { userLabel }
+      data: { userLabel },
     });
 
     dialogRef.afterClosed().subscribe((confirmed) => {
@@ -117,7 +123,7 @@ export class UsersCrudPageComponent {
       id: this.getNextId(),
       name: '',
       email: '',
-      phone: ''
+      phone: '',
     };
 
     if (this.formDirective) {

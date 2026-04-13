@@ -9,7 +9,7 @@ import { AuthService } from '../../shared/services/auth.service';
   standalone: true,
   imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   styleUrl: './profile-page.component.scss',
-  templateUrl: './profile-page.component.html'
+  templateUrl: './profile-page.component.html',
 })
 export class ProfilePageComponent {
   private readonly formBuilder = inject(FormBuilder);
@@ -18,7 +18,7 @@ export class ProfilePageComponent {
   readonly form = this.formBuilder.nonNullable.group({
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   saved = false;
@@ -28,7 +28,7 @@ export class ProfilePageComponent {
     this.form.setValue({
       username: profile.username,
       email: profile.email,
-      password: profile.password
+      password: profile.password,
     });
   }
 

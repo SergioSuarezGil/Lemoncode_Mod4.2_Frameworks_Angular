@@ -10,7 +10,7 @@ interface DeleteConfirmDialogData {
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
   styleUrl: './delete-confirm-dialog.component.scss',
-  templateUrl: './delete-confirm-dialog.component.html'
+  templateUrl: './delete-confirm-dialog.component.html',
 })
 export class DeleteConfirmDialogComponent {
   private readonly dialogRef = inject(MatDialogRef<DeleteConfirmDialogComponent, boolean>);

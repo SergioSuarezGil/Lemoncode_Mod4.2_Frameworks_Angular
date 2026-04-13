@@ -12,42 +12,42 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'home',
   },
   {
     path: 'home',
-    component: HomePageComponent
+    component: HomePageComponent,
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
   },
   {
     path: 'acerca-de',
-    component: AboutPageComponent
+    component: AboutPageComponent,
   },
   {
     path: 'dashboard',
     canActivate: [authGuard],
-    component: DashboardPageComponent
+    component: DashboardPageComponent,
   },
   {
     path: 'galeria',
     canActivate: [authGuard],
-    component: GalleryPageComponent
+    component: GalleryPageComponent,
   },
   {
     path: 'users-crud',
     canActivate: [authGuard],
-    component: UsersCrudPageComponent
+    component: UsersCrudPageComponent,
   },
   {
     path: 'profile',
     canActivate: [authGuard],
-    component: ProfilePageComponent
+    component: ProfilePageComponent,
   },
   {
     path: '**',
-    redirectTo: 'home'
-  }
+    redirectTo: 'home',
+  },
 ];

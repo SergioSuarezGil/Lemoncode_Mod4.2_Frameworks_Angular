@@ -18,7 +18,7 @@ interface StoredAuthState {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private readonly authConfig = inject(AuthConfigService);
@@ -78,7 +78,7 @@ export class AuthService {
       this.profileState.set({
         username: parsedState.profile?.username ?? this.defaultProfile.username,
         email: parsedState.profile?.email ?? this.defaultProfile.email,
-        password: parsedState.profile?.password ?? this.defaultProfile.password
+        password: parsedState.profile?.password ?? this.defaultProfile.password,
       });
     } catch {
       localStorage.removeItem(this.storageKey);
@@ -90,7 +90,7 @@ export class AuthService {
   private persistState(): void {
     const state: StoredAuthState = {
       isLogged: this.loggedState(),
-      profile: this.profileState()
+      profile: this.profileState(),
     };
 
     localStorage.setItem(this.storageKey, JSON.stringify(state));

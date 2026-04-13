@@ -10,19 +10,22 @@ import { AuthService } from '../../shared/services/auth.service';
   standalone: true,
   imports: [ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   styleUrl: './login-page.component.scss',
-  templateUrl: './login-page.component.html'
+  templateUrl: './login-page.component.html',
 })
 export class LoginPageComponent {
   private readonly formBuilder = inject(FormBuilder);
 
   readonly form = this.formBuilder.nonNullable.group({
     username: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   invalidCredentials = false;
 
-  constructor(private readonly auth: AuthService, private readonly router: Router) {}
+  constructor(
+    private readonly auth: AuthService,
+    private readonly router: Router
+  ) {}
 
   submit(): void {
     this.invalidCredentials = false;

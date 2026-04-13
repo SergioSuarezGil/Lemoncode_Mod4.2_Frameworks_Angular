@@ -8,13 +8,13 @@ export interface UserItem {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
   private readonly usersState = signal<UserItem[]>([
     { id: 1, name: 'Ana Perez', email: 'ana@demo.com', phone: '600111222' },
     { id: 2, name: 'Luis Gomez', email: 'luis@demo.com', phone: '600333444' },
-    { id: 3, name: 'Marta Diaz', email: 'marta@demo.com', phone: '600555666' }
+    { id: 3, name: 'Marta Diaz', email: 'marta@demo.com', phone: '600555666' },
   ]);
 
   readonly users = this.usersState.asReadonly();
